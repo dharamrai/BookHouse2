@@ -1,0 +1,155 @@
+﻿@page
+@model Website.Pages.Books.IndexModel
+@{
+    ViewData["Title"] = "Book House";
+}
+<!-- Page wrapper starts -->
+<div class="page-wrapper">
+
+    <!-- Main container starts -->
+    <div class="main-container">
+        <div class="app-container">
+            <div class="app-body">
+
+                <div class="card mt-3 p-4">
+
+                    @if (TempData["Notification"] != null)
+                    {
+                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                            @TempData["Notification"].ToString()
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                        </div>
+                    }
+
+                    <div class="card-header p-1 d-flex justify-content-between align-items-center">
+                        <h5 class="fw-bold">Books Management</h5>
+                        <a asp-page="Manage" class="btn btn-primary">Add New</a>
+                    </div>
+
+                    <div class="card-body p-1">
+                        @if (Model.Books != null && Model.Books.Count > 0)
+                        {
+                            <div class="table-responsive">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Sl.</th>
+                                            <th>Pic</th>
+                                            <th>Book Name</th>
+                                            <th>Author</th>
+                                            <th>Price</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @{
+                                            var sl = 1;
+                                            foreach (var item in Model.Books)
+                                            {
+                                                <tr>
+                                                    <td>@sl</td>
+                                                    <td>
+                                                        <div class="d-flex align-items-center justify-content-center">
+                                                            @if (!string.IsNullOrEmpty(item.BookImage))
+                                                            {
+                                                                <img src="/BookImage/@(item.BookImage ?? "Default.png")" style="width:60px; border:1px solid gray;" />
+                                                            }
+                                                            else
+                                                            {
+                                                                <span>No Photo</span>
+                                                            }
+                                                        </div>
+                                                    </td>
+                                                    <td>@item.BookName</td>
+                                                    <td>@item.Author</td>
+                                                    <td>@item.Price</td>
+                                                    <td>
+                                                        <div class="d-flex gap-2 justify-content-center">
+                                                            <form method="post" asp-page-handler="Edit">
+                                                                <input type="hidden" name="bookId" value="@item.Id" />
+                                                                <button type="submit" class="btn btn-primary btn-sm">Edit</button>
+                                                            </form>
+
+                                                            <a href="#" data-bs-toggle="modal" data-bs-target="#DeleteModal"
+                                                               data-bs-id="@item.Id"
+                                                               data-bs-name="@item.BookName"
+                                                               class="btn btn-danger btn-sm">
+                                                                Delete
+                                                            </a>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                sl++;
+                                            }
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        }
+                        else
+                        {
+                            <span class="text-danger">No record found</span>
+                        }
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<hr class="my-4" style="border-top: 2px dashed #ccc;" />
+
+<!-- Delete Confirmation Modal -->
+<div class="modal fade" id="DeleteModal" data-bs-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5>Confirm Delete</h5>
+            </div>
+            <div class="modal-body">
+                Do you want to delete <span id="bookName" class="fw-bold"></span>?
+            </div>
+            <div class="modal-footer d-flex justify-content-center gap-3">
+                <button class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <form method="post" asp-page-handler="Delete">
+                    <input type="hidden" id="bookIdDelete" name="bookId" />
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br />
+<br />
+<br />
+
+<div>
+    <span>Hello</span>
+</div>
+
+
+
+@section Scripts {
+
+    <script type="text/javascript" asp-append-version="true">
+
+        const deleteModal = document.getElementById("DeleteModal");
+
+        deleteModal.addEventListener('show.bs.modal', (event) => {
+
+            const button = event.relatedTarget;
+            const bookId = button.getAttribute('data-bs-id');
+            const bookName = button.getAttribute('data-bs-name');
+
+            $("#bookName").html(bookName);
+            $("#bookIdDelete").val(bookId);
+
+
+        });
+
+    </script>
+
+}

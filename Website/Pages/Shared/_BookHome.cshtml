@@ -1,0 +1,43 @@
+﻿
+@using Domain.Models.ModelDTOs
+@model List<BooksDTO>
+<div class="row">
+
+    <div class="text-center my-4">
+        <div class="text-primary fw-semibold fs-2">📚 Welcome To Book House</div>
+        <p class="text-muted">Explore our collection of curated books</p>
+    </div>
+
+    @if (Model != null && Model.Count > 0)
+    {
+        <div class="row gx-4">
+            @foreach (var item in Model)
+            {
+                <div class="col-xl-3 col-sm-6 col-12">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <div class="text-center">
+                                <img src="/BookImage/@(item.BookImage ?? "Default.png")" class="img-fluid mb-3" alt="@item.BookName" style="max-height: 200px;" />
+
+                                <h5 class="mb-2 fw-bold">@item.BookName</h5>
+
+                                <h6 class="mb-2 fw-light">By @item.Author</h6>
+
+                                <p class="fw-semibold">Price: ₹@item.Price</p>
+
+                                <a href="#" class="btn btn-outline-primary w-100">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+    else
+    {
+        <div class="text-center">
+            <span class="text-danger">No record found</span>
+        </div>
+    }
+
+</div>

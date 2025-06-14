@@ -1,0 +1,19 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="page-wrapper">
+
+    <!-- Main container starts -->
+    <div class="main-container">
+        <!-- App container starts -->
+        <div class="app-container">
+            <div class="app-body">
+            <partial name="_BookHome" model="@Model.modelVm" />
+            </div>
+        </div>
+      
+    </div>
+</div>

@@ -1,0 +1,108 @@
+﻿@page
+@model Website.Pages.Books.ManageModel
+@{
+
+}
+
+<!-- Page wrapper starts -->
+<div class="page-wrapper">
+
+    <!-- Main container starts -->
+    <div class="main-container">
+        <div class="app-container">
+            <div class="app-body">
+
+                <div class="card-header" style="display:flex; align-items:center; justify-content:space-between">
+
+                    @{
+                        if (string.IsNullOrEmpty(Model.booksDTO.BookImage) || Model.IsNew)
+                        {
+                            <h5>Add Book</h5>
+                            <a asp-page="Index" class="btn btn-primary">Back</a>
+                        }
+                        else
+                        {
+                            <h5>Update Book</h5>
+                            <a asp-page="Index" class="btn btn-primary">Back</a>
+                        }
+                    }
+                </div>
+
+                <div class="card-body mt-1 p-2">
+
+                    <form method="post" enctype="multipart/form-data">
+
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="col-lg-10">
+                                    <div class="text-center">
+                                        @{
+                                            string imageName = string.IsNullOrEmpty(Model.booksDTO.BookImage) ? "Default.jpg" : Model.booksDTO.BookImage;
+                                        }
+
+                                        <img src="/BookImage/@imageName" class="img-fluid mb-3 border" style="max-width: 80%;" alt="Book Image" />
+
+                                        <input type="hidden" asp-for="booksDTO.BookImage" />
+
+                                        @if (string.IsNullOrEmpty(Model.booksDTO.BookImage) || Model.IsNew)
+                                        {
+                                            <div class="text-danger mb-2">Upload Image</div>
+                                        }
+
+                                        <input type="file" id="BookImageFile" name="BookImageFile" class="form-control form-control-sm w-50 mx-auto" accept=".jpg,.jpeg,.png" />
+                                    </div>
+
+
+
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+
+                                <input type="hidden" asp-for="booksDTO.Id" />
+
+                                <div class="col-lg-12 mt-2">
+                                    <label class="fw-bold">Book Name:</label>
+                                    <input type="text" asp-for="booksDTO.BookName" class="form-control" />
+                                    <span asp-validation-for="booksDTO.BookName" class="text-danger"></span>
+                                </div>
+
+                                <div class="col-lg-12 mt-2">
+                                    <label class="fw-bold">Author:</label>
+                                    <input type="text" asp-for="booksDTO.Author" class="form-control" />
+                                    <span asp-validation-for="booksDTO.Author" class="text-danger"></span>
+
+                                </div>
+
+                                <div class="col-lg-12 mt-2">
+                                    <label class="fw-bold">Price:</label>
+                                    <input type="number" asp-for="booksDTO.Price" class="form-control" />
+                                    <span asp-validation-for="booksDTO.Price" class="text-danger"></span>
+                                </div>
+
+                                <div class="col-lg-12 mt-2">
+
+                                    @{
+                                        if (string.IsNullOrEmpty(Model.booksDTO.BookName) || Model.IsNew)
+                                        {
+                                            <button type="submit" class="btn btn-primary">Submit</button>
+                                        }
+                                        else
+                                        {
+                                            <button type="submit" class="btn btn-primary">Update</button>
+                                        }
+                                    }
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
