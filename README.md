@@ -10,12 +10,19 @@ To run this project, do these:
 Technical Stack:
   Backend (WebApi Project):
       > .NET 8.0: Leveraging the latest features and performance enhancements of the .NET framework.
+      
       > Entity Framework Core (ORM): For efficient and robust interaction with the database.
+      
       > Entity Framework Core SQL Server: Specific provider for connecting to SQL Server databases.
+      
       > AutoMapper: Streamlining object-to-object mapping between different layers (e.g., DTOs and entities).
+      
       > Modular Structure: Separated into `Domain` (for business entities and interfaces) and `Infrastructure` (for data access implementations) class libraries to maintain logical organization. *Note: This project intentionally simplifies the architecture for demonstration purposes, omitting a dedicated service layer to highlight direct API-to-repository interaction.*
+      
       > Frontend (Razor Pages):
           .NET 8.0 Razor Pages: For building dynamic web UI with a focus on page-based development.
+          
       > CUBE Free Template: Utilized for a clean, modern, and responsive user interface, enhancing the overall presentation.
-    > Database:
-      SQL Server: As the robust relational database management system for storing book data.
+      
+       > Database:
+         SQL Server: As the robust relational database management system for storing book data.
