@@ -3,7 +3,7 @@ This project, "Book House," serves as a practical demonstration of consuming a R
 This solution is designed for clarity and conciseness, focusing specifically on API consumption and data persistence, making it an ideal example for understanding core web development interactions without the added complexity of extensive architectural layers.
 
 To run this project, do these:
-1. Copy the HTTPS link of the project and clone the project.
+1. Copy the HTTPS link of the project and clone the project via Visual Studio.
 2. Set up the Db. You can find the Db script in the following location. Copy the script and run it in your Sqlserver database.
    > Infrastructure> Context> DBScript.txt
 
