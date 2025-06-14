@@ -26,3 +26,11 @@ Technical Stack:
       
        > Database:
          SQL Server: As the robust relational database management system for storing book data.
+
+
+<img width="795" alt="image" src="https://github.com/user-attachments/assets/53156618-cdc3-4535-b215-70376d88e334" />
+
+<img width="839" alt="image" src="https://github.com/user-attachments/assets/c2915773-941d-44d4-998b-2c155ed5435f" />
+
+
+
