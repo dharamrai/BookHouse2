@@ -32,5 +32,8 @@ Technical Stack:
 
 <img width="839" alt="image" src="https://github.com/user-attachments/assets/c2915773-941d-44d4-998b-2c155ed5435f" />
 
+Project structure:
+<img width="638" alt="image" src="https://github.com/user-attachments/assets/7c70cc66-932d-4ea3-b1f6-5f6ae1a788b6" />
+
 
 
