@@ -1,0 +1,3 @@
+This project, "Book House," serves as a practical demonstration of consuming a RESTful API within a .NET 8 Razor Pages web application. The primary goal is to showcase the end-to-end process of interacting with a backend API to perform standard CRUD (Create, Read, Update, Delete) operations and display the data on a user-friendly frontend.
+
+This solution is designed for clarity and conciseness, focusing specifically on API consumption and data persistence, making it an ideal example for understanding core web development interactions without the added complexity of extensive architectural layers.
